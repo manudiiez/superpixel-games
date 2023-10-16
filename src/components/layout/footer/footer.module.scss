@@ -1,0 +1,80 @@
+@import '@/scss/index.scss';
+
+.footer {
+    background-color: $background-secondary;
+    padding: 6rem 1.5rem;
+
+    .content {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+
+        >div {
+            margin-bottom: 5rem;
+
+            h6 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 2rem;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+
+
+                li {
+                    a {
+                        font-size: 1.3rem;
+                        font-weight: 400;
+
+                        &:hover {
+                            color: $primary-hover;
+
+                            svg {
+                                transform: scale(1.05);
+                            }
+                        }
+                    }
+
+                    ul {
+                        flex-direction: row;
+                        gap: 1.5rem;
+
+                        li {
+                            a {
+                                font-size: 1.8rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    @media (min-width: 700px) {
+        padding: 10rem 1.5rem;
+
+        .content {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+
+            >div {
+                margin-bottom: 0;
+
+                &:last-of-type {
+                    gap: 7rem;
+                }
+            }
+        }
+    }
+}

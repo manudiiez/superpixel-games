@@ -1,0 +1,187 @@
+@import '@/scss/index.scss';
+
+.bannerVideo {
+    width: 100%;
+
+    .videoContainer {
+        padding: 0 1.5rem;
+        position: relative;
+        z-index: 1;
+
+        >div {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+
+            h4 {
+                font-size: 1.5rem;
+                text-align: center;
+                font-weight: 700;
+                line-height: 2.7rem;
+                margin-bottom: 4rem;
+            }
+
+            >div {
+                &:last-of-type {
+                    display: none;
+                }
+
+            }
+
+
+        }
+    }
+
+    .infoContainer {
+        position: relative;
+        top: -7rem;
+        width: 100%;
+        background-color: $primary;
+        padding: 4rem 1.5rem;
+        padding-top: 10rem;
+
+        >div {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+
+            >div {
+
+                h4 {
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    margin-bottom: 3rem;
+                }
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+
+                    li {
+                        h5 {
+                            font-weight: 600;
+                            font-size: 1.5rem;
+                            margin-bottom: .5rem;
+                        }
+
+                        p {
+                            padding-left: 1.3rem;
+                            font-weight: 400;
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+
+                &:last-of-type {
+                    .date {
+                        font-size: 1.5rem;
+
+                        span {
+                            font-weight: 700;
+                        }
+                    }
+
+                    .price {
+                        display: flex;
+                        margin-top: 2rem;
+                        align-items: center;
+
+                        >p {
+                            padding-left: 6rem;
+                            font-size: 2.5rem;
+                            font-weight: 500;
+                        }
+
+                        .discount {
+                            font-size: 1.4rem;
+                            background-color: $text-primary;
+                            color: $primary;
+
+                            &::after {
+                                background-color: $text-primary;
+                            }
+                        }
+                    }
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        padding: 1rem;
+                        border-radius: 20px;
+                        text-decoration: none;
+                        font-size: 1.2rem;
+                        height: 45px;
+                        border: 2px solid $text-primary;
+                        margin: auto;
+                        margin-top: 2rem;
+                        max-width: 300px;
+
+                        &:hover {
+                            color: $primary;
+                            background-color: $text-primary;
+                            border: none;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    @media (min-width: 700px) {
+        .videoContainer {
+            >div {
+                >div {
+                    &:first-of-type {
+                        display: none;
+                    }
+
+                    &:last-of-type {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 850px) {
+        .videoContainer {
+            >div {
+                h4 {
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        .infoContainer {
+            padding: 6rem 1.5rem;
+            padding-top: 12rem;
+
+            >div {
+                flex-direction: row-reverse;
+                justify-content: space-between;
+
+                >div {
+                    h4 {
+                        font-size: 2rem;
+                    }
+
+                    &:last-of-type {
+                        max-width: 500px;
+
+                        a {
+                            margin: 0;
+                            margin-top: 3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

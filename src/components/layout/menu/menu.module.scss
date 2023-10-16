@@ -1,0 +1,363 @@
+@import '@/scss/index.scss';
+
+.menu {
+    width: 100%;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    padding: 0 1.5rem;
+    background-color: #3d3d3d10;
+    backdrop-filter: blur(20px);
+
+    nav {
+        width: 100%;
+        max-width: 1200px;
+        padding: 1rem 0;
+        display: grid;
+        margin: auto;
+        grid-template-columns: 1fr 1fr;
+
+        svg {
+            width: 20px;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            p {
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+
+            button {
+                background-color: transparent;
+                border: none;
+
+                svg {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .center {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: -100%;
+            // background-color: rgba(0, 0, 0, 0.548);
+
+            &.active {
+                animation-name: openMenu;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+
+                .bgMenu {
+                    display: block;
+                    animation-name: openMenuBg;
+                    animation-delay: 1s;
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+                }
+            }
+
+            .closeMenu {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                cursor: pointer;
+                background-color: transparent;
+                border: none;
+
+                svg {
+                    font-size: 1.3rem;
+                    padding: 1rem;
+                }
+            }
+
+            .bgMenu {
+                width: 100vw;
+                height: 100%;
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            >ul {
+                position: relative;
+                z-index: 100;
+                width: 70%;
+                height: 100%;
+                background-color: $background-secondary;
+                padding: 5rem 0;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                li {
+                    margin-left: 2rem;
+
+                    a {
+                        display: flex;
+                        gap: 1rem;
+                        font-size: 1rem;
+                        text-decoration: none;
+                        align-items: center;
+                        padding: .5rem;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+
+                        img {
+                            height: 1.5rem;
+                            filter: brightness(0) invert(1);
+                        }
+
+                        svg {
+                            font-size: 1.5rem;
+                        }
+                    }
+
+                    &:last-of-type {
+                        display: none;
+                    }
+                }
+
+            }
+
+            >div {
+                display: none;
+            }
+
+            .search {
+                display: flex;
+                position: absolute;
+                width: 100%;
+                top: -200px;
+                left: 100%;
+                justify-content: center;
+                align-items: center;
+                transition: top .5s ease-in-out;
+
+
+                input {
+                    background-color: $primary;
+                    padding: 1rem;
+                    border: none;
+                    width: calc(100% - 2rem);
+                    border-radius: 20px;
+                    color: $text-primary;
+                }
+
+                svg {
+                    display: none;
+                    position: absolute;
+                    right: 2rem;
+                }
+            }
+
+            &.activeSearch {
+                .search {
+                    width: 100%;
+                    top: 1rem;
+
+                    svg {
+                        display: block;
+                    }
+
+                }
+
+            }
+        }
+
+        .right {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            svg {
+                width: 1.3rem;
+            }
+
+            li {
+                &:last-of-type {
+                    display: none;
+                }
+
+                svg {
+                    font-size: 1.3rem;
+                }
+
+                button {
+                    background-color: transparent;
+                    border: none;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 750px) {
+        nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 1.5rem 0;
+
+            .left {
+                button {
+                    display: none;
+                }
+            }
+
+            .bgMenu {
+                display: none !important;
+            }
+
+            .center {
+                justify-self: center;
+                position: relative;
+                height: fit-content;
+                left: 0;
+
+                ul {
+                    flex-direction: row;
+                    gap: 1.5rem;
+                    background-color: transparent;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+                    width: 100%;
+
+                    li {
+                        margin: 0;
+
+                        &:first-of-type {
+                            display: none;
+                        }
+
+                        a {
+                            &:hover {
+                                text-decoration: underline;
+                            }
+
+                            img {
+                                display: none;
+                                height: 1.2rem;
+                                filter: brightness(0) invert(1);
+                            }
+                        }
+
+                        &:last-of-type {
+                            display: inline;
+
+                            button {
+                                cursor: pointer;
+                                background-color: $primary;
+                                border: none;
+                                height: 45px;
+                                width: 45px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 1.2rem;
+
+                                &:hover {
+                                    background-color: $primary-hover;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                .closeMenu {
+                    display: none;
+                }
+
+                .search {
+                    display: block;
+                    position: absolute;
+                    width: 0%;
+                    height: 100%;
+                    background-color: $primary;
+                    top: 0;
+                    left: 0;
+                    z-index: 100;
+                    border-radius: 20px;
+                    transition: none;
+
+                    input {
+                        width: 100%;
+                        height: 100%;
+                        background-color: transparent;
+                        border: none;
+                        padding: 0 1rem;
+                        color: $text-primary;
+                    }
+
+                    svg {
+                        display: none;
+                        cursor: pointer;
+                        font-size: 1.3rem;
+                        position: absolute;
+                        top: 50%;
+                        right: -30px;
+                        transform: translateY(-50%);
+                    }
+                }
+
+                &.activeSearch {
+                    .search {
+                        width: 100%;
+                        top: 0;
+
+                        svg {
+                            display: block;
+                        }
+
+                    }
+
+                }
+            }
+
+            .right {
+                li {
+
+                    &:first-of-type {
+                        display: none;
+                    }
+
+                    &:last-of-type {
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes openMenu {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes openMenuBg {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.548);
+    }
+}
