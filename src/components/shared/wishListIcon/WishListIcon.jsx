@@ -13,7 +13,8 @@ const WishListIcon = ({ gameId, className }) => {
     if (status === 'unauthenticated') return <FontAwesomeIcon icon={faHeart} onClick={() => router.push('/join/sign-in')} />
 
     return (
-        <Icon className={className} token={session.user.jwt} userId={session.user.user.id} gameId={gameId} />
+        <p>p</p>
+        // <Icon className={className} token={session.user.jwt} userId={session.user.user.id} gameId={gameId} />
     )
 }
 
