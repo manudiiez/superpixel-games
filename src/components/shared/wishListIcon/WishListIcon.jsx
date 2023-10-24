@@ -14,7 +14,6 @@ const WishListIcon = ({ gameId, className }) => {
 
     return (
         <Icon className={className} token={session.user.jwt} userId={session.user.user.id} gameId={gameId} />
-
     )
 }
 
