@@ -3,7 +3,7 @@ import FormSettings from '@/components/account/settings/form/FormSettings'
 import styles from './settings.module.scss'
 import { useSession } from 'next-auth/react';
 
-const page = () => {
+const Page = () => {
 
     const { data: session } = useSession()
 
@@ -16,4 +16,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

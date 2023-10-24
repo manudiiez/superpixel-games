@@ -4,7 +4,7 @@ import GamesList from '@/components/shared/gamesList/GamesList'
 import BannerVideo from '@/components/shared/bannerVideo/BannerVideo'
 import Separator from '@/components/shared/separator/Separator'
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <BannerLastGame />
@@ -28,4 +28,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

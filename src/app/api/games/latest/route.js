@@ -11,7 +11,6 @@ export const GET = async (request) => {
         const sort = `sort[0]=publishedAt:desc`
         const populate = `populate=*`
         const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${sort}&${filterLimit}&${filterPlatform}&${populate}`
-
         const response = await fetch(url);
         const result = await response.json()
         if (response.status !== 200) throw result

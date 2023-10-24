@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import { ENV } from "@/utils/constants"
 
 
-const page = () => {
+const Page = () => {
 
     const { cart, changeQuantityItem, deleteItem } = useCart()
     const [games, setGames] = useState(null);
@@ -43,4 +43,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

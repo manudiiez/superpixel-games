@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styles from './sign-up.module.scss'
 import RegisterForm from '@/components/join/registerForm/RegisterForm'
 
-const page = () => {
+const Page = () => {
     return (
         <section className={styles.container}>
             <p>Empieza gratis</p>
@@ -16,4 +16,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

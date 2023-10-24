@@ -3,7 +3,7 @@ import WishList from '@/components/account/wishList/WishList';
 import { useSession } from 'next-auth/react';
 
 
-const page = () => {
+const Page = () => {
 
     const { data: session, status } = useSession()
 
@@ -13,4 +13,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

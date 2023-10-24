@@ -10,7 +10,7 @@ import Info from '@/components/game/info/Info'
 import Comments from '@/components/game/comments/CommentsContainer'
 import GamesList from '@/components/shared/gamesList/GamesList'
 
-const page = async ({ params }) => {
+const Page = async ({ params }) => {
 
     const { game } = params
 
@@ -60,4 +60,4 @@ const page = async ({ params }) => {
     )
 }
 
-export default page
+export default Page

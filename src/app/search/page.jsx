@@ -2,7 +2,7 @@ import SearchPage from '@/components/search/SearchPage'
 import { ENV } from '@/utils/constants'
 import React from 'react'
 
-const page = async ({ searchParams }) => {
+const Page = async ({ searchParams }) => {
 
     const { s, page = 1, platforms = '' } = searchParams
 
@@ -23,4 +23,4 @@ const page = async ({ searchParams }) => {
     return <SearchPage games={games} pagination={pagination} searchText={s} />
 }
 
-export default page
+export default Page
