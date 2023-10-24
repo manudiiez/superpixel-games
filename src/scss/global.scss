@@ -16,3 +16,10 @@ body {
 ul {
     list-style: none;
 }
+
+.swal2-container {
+    >div {
+        background-color: #0B1625 !important;
+        color: #ffffff !important;
+    }
+}

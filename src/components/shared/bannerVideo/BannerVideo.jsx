@@ -29,10 +29,10 @@ const BannerVideo = async ({ title }) => {
                 <div>
                     <h4>{title}</h4>
                     <div>
-                        <VideoPlayer video={game.attributes.video} height={450} />
+                        <VideoPlayer video={game.attributes.video} height={450} className={styles.video} />
                     </div>
                     <div>
-                        <VideoPlayer video={game.attributes.video} height={550} />
+                        <VideoPlayer video={game.attributes.video} height={550} className={styles.video} />
                     </div>
                 </div>
             </div>

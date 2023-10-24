@@ -14,6 +14,8 @@ export const ENV = {
         GAME: 'games',
         WISHLIST: 'wishlists',
         ORDER: 'orders',
+        COMMENTS: 'comments',
+        DISCOUNTS: 'discounts',
     },
     TOKEN: "token",
     CART: "cart",

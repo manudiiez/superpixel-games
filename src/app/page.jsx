@@ -1,6 +1,6 @@
 import styles from './home.module.scss'
 import BannerLastGame from '@/components/home/bannerLastGame/BannerLastGame'
-import GamesList from '@/components/home/gamesList/GamesList'
+import GamesList from '@/components/shared/gamesList/GamesList'
 import BannerTrust from '@/components/shared/bannerTrust/BannerTrust'
 import BannerVideo from '@/components/shared/bannerVideo/BannerVideo'
 import Separator from '@/components/shared/separator/Separator'

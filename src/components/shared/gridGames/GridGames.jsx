@@ -6,7 +6,6 @@ import styles from './gridGames.module.scss'
 import { map } from "lodash";
 
 const GridGames = ({ games }) => {
-
     return (
         <div className={styles.gridGames}>
             {
@@ -14,11 +13,11 @@ const GridGames = ({ games }) => {
                     <Link href={`/${game.attributes.slug}`} key={game.id} className={styles.game}>
                         <div>
                             <img src={`${ENV.SERVER_HOST}${game.attributes.cover.data.attributes.url}`} className={styles.wallpaper} />
-                            {/* {game.attributes.discount > 0 && (
+                            {game.attributes.discount > 0 && (
                                 <Discount className={styles.discount}>
                                     {`-${game.attributes.discount}%`}
                                 </Discount>
-                            )} */}
+                            )}
                         </div>
                         <div>
                             <span>{game.attributes.title}</span>

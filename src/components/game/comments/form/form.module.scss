@@ -1,0 +1,43 @@
+@import '@/scss/index.scss';
+
+.form {
+    position: relative;
+
+    >textarea {
+        width: 100%;
+        height: 130px;
+        border: none;
+        background-color: transparent;
+        color: $text-primary;
+
+        &:focus {
+            border: none !important;
+        }
+
+        &::placeholder {
+            color: $text-secondary;
+        }
+
+    }
+
+    >button {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+        background-color: $primary;
+        border: none;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 150px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $primary-hover;
+        }
+    }
+
+
+}

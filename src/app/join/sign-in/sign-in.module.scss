@@ -1,0 +1,41 @@
+@import '@/scss/index.scss';
+
+.container {
+    >p {
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: $text-secondary;
+    }
+
+    >h1 {
+        font-size: 1.7rem;
+        margin-bottom: 1rem;
+
+        span {
+            color: $primary;
+            font-size: 3rem;
+        }
+    }
+
+    >span {
+        font-size: 1.3rem;
+        color: $text-secondary;
+        font-weight: 700;
+
+
+        a {
+            color: $primary-hover;
+            text-decoration: none;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+
+    }
+
+    >div {
+        margin-top: 3rem;
+    }
+}

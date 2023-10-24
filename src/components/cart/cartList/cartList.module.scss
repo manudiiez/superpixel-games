@@ -1,0 +1,14 @@
+@import '@/scss/index.scss';
+
+.cartList {
+    display: flex;
+    flex-direction: column;
+
+    >div {
+        border-bottom: 1px solid $background-ternari;
+
+        &:last-of-type {
+            border: none;
+        }
+    }
+}

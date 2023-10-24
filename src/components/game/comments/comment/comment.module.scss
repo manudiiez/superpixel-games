@@ -1,0 +1,53 @@
+@import '@/scss/index.scss';
+
+.comment {
+    background-color: $background-secondary;
+    padding: 1.5rem 1rem;
+
+    >span {
+        font-size: 1.2rem;
+        color: $background-ternari;
+        text-transform: uppercase;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        >div {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            button {
+                font-size: 1.3rem;
+                padding: .3rem 1rem;
+                border: none;
+                background-color: $primary;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:last-of-type {
+                    background-color: $danger;
+                }
+
+                &:hover {
+                    background-color: $primary-hover;
+                }
+            }
+        }
+    }
+
+    >p {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+
+        >span {
+            font-weight: 700;
+        }
+
+        &:last-of-type {
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+        }
+    }
+}

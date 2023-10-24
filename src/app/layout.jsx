@@ -1,8 +1,12 @@
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import '@/scss/global.scss';
+// import '@/utils/mp'
 import Footer from '@/components/layout/footer/Footer'
 import Menu from '@/components/layout/menu/Menu'
-import Separator from '@/components/shared/separator/Separator'
-import '@/scss/global.scss'
 import { Inter } from 'next/font/google'
+import { AuthProvider } from './Providers'
+import { CartProvider } from "@/context/CartContext";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,10 +19,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Menu />
-        <main>
-          {children}
-        </main>
+        <AuthProvider>
+          <CartProvider>
+            <Menu />
+            <main>
+              {children}
+            </main>
+          </CartProvider>
+        </AuthProvider>
         <Footer />
       </body>
     </html>

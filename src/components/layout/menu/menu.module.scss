@@ -27,7 +27,8 @@
             align-items: center;
             gap: 1rem;
 
-            p {
+            a {
+                text-decoration: none;
                 font-size: 1.5rem;
                 font-weight: 700;
             }
@@ -107,6 +108,7 @@
                         font-size: 1rem;
                         text-decoration: none;
                         align-items: center;
+                        justify-content: flex-start;
                         padding: .5rem;
 
                         &:hover {
@@ -143,7 +145,7 @@
                 justify-content: center;
                 align-items: center;
                 transition: top .5s ease-in-out;
-
+                z-index: 50;
 
                 input {
                     background-color: $primary;
@@ -152,6 +154,7 @@
                     width: calc(100% - 2rem);
                     border-radius: 20px;
                     color: $text-primary;
+                    display: none;
                 }
 
                 svg {
@@ -165,6 +168,10 @@
                 .search {
                     width: 100%;
                     top: 1rem;
+
+                    input {
+                        display: block;
+                    }
 
                     svg {
                         display: block;
@@ -223,6 +230,16 @@
                 position: relative;
                 height: fit-content;
                 left: 0;
+
+                &.active {
+                    animation-name: none;
+
+                    .bgMenu {
+                        display: none;
+                        animation-name: none;
+                    }
+                }
+
 
                 ul {
                     flex-direction: row;

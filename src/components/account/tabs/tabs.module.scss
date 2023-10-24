@@ -1,0 +1,48 @@
+@import '@/scss/index.scss';
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid $background-ternari;
+    align-items: center;
+
+    >div {
+        display: flex;
+
+        a,
+        button {
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0 1rem;
+            position: relative;
+            bottom: -2px;
+            height: 35px;
+
+            &.isActive {
+                color: $primary;
+                border-bottom: 2px solid $primary;
+            }
+
+            span {
+                display: none;
+            }
+
+            &:hover {
+                color: $primary;
+                border-bottom: 2px solid $primary;
+            }
+        }
+
+        &:last-of-type {
+
+            button {
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                background-color: transparent;
+                border: none;
+                font-size: 1.3rem;
+            }
+        }
+    }
+}

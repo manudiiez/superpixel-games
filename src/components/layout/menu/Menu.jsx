@@ -6,15 +6,29 @@ import { faBagShopping, faBars, faMagnifyingGlass, faX } from '@fortawesome/free
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { useState } from 'react'
 import classNames from 'classnames'
+import CartIcon from './cartIcon/CartIcon'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const Menu = () => {
 
+    const router = useRouter()
+
+    const serachParams = useSearchParams()
+    const params = new URLSearchParams(serachParams)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
+    const [search, setSearch] = useState(params.get('s') || '');
+
+    const platforms = params.get('platforms') || ''
 
 
     const openCloseMenu = () => setIsMenuOpen(!isMenuOpen)
     const openCloseSearch = () => setShowSearch(!showSearch)
+
+    const onSearch = (e) => {
+        setSearch(e.target.value)
+        router.push(`/search?s=${e.target.value}&platforms=${platforms}`)
+    }
 
     return (
         <header className={styles.menu}>
@@ -23,7 +37,9 @@ const Menu = () => {
                     <button onClick={openCloseMenu}>
                         <FontAwesomeIcon icon={faBars} />
                     </button>
-                    <p>SP-GAMES</p>
+                    <Link href='/'>
+                        SP-GAMES
+                    </Link>
                 </div>
                 <div className={classNames(styles.center, {
                     [styles.active]: isMenuOpen,
@@ -31,31 +47,31 @@ const Menu = () => {
                 })}>
                     <ul>
                         <li>
-                            <Link href='/'>
+                            <Link href='/account/wishlist' onClick={openCloseMenu}>
                                 <FontAwesomeIcon icon={faUser} />
-                                Cuenta
+                                Mi cuenta
                             </Link>
                         </li>
                         <li>
-                            <Link href='/'>
+                            <Link href='/search?s=&platforms=playstation' onClick={openCloseMenu}>
                                 <img src="./icon-play.svg" alt="" />
                                 PS4
                             </Link>
                         </li>
                         <li>
-                            <Link href='/'>
+                            <Link href='/search?s=&platforms=pc' onClick={openCloseMenu}>
                                 <img src="./icon-pc.svg" alt="" />
                                 PC
                             </Link>
                         </li>
                         <li>
-                            <Link href='/'>
+                            <Link href='/search?s=&platforms=nintendo' onClick={openCloseMenu}>
                                 <img src="./icon-swt.svg" alt="" />
                                 Nintendo
                             </Link>
                         </li>
                         <li>
-                            <Link href='/'>
+                            <Link href='/search?s=&platforms=xbox' onClick={openCloseMenu}>
                                 <img src="./icon-xbx.svg" alt="" />
                                 Xbox
                             </Link>
@@ -73,7 +89,7 @@ const Menu = () => {
                     <div className={classNames(styles.search, {
                         [styles.active]: showSearch
                     })}>
-                        <input type="text" placeholder='Buscador' />
+                        <input type="text" placeholder='Buscador' onChange={(e) => onSearch(e)} value={search} />
                         <FontAwesomeIcon icon={faX} onClick={openCloseSearch} />
                     </div>
                 </div>
@@ -84,12 +100,12 @@ const Menu = () => {
                         </button>
                     </li>
                     <li>
-                        <Link href='/'>
-                            <FontAwesomeIcon icon={faBagShopping} />
+                        <Link href='/cart'>
+                            <CartIcon />
                         </Link>
                     </li>
                     <li>
-                        <Link href='/account'>
+                        <Link href='/account/wishlist'>
                             <FontAwesomeIcon icon={faUser} />
                         </Link>
                     </li>

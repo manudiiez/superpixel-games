@@ -4,8 +4,6 @@ import { ENV } from "@/utils/constants";
 
 const GamesList = async ({ title, limit = 3, platformId = '', url = 'games/latest' }) => {
 
-    console.log(`${ENV.CLIENT_API}/${url}?limit=${limit}&platformId=${platformId}`);
-
     const getGames = async () => {
         try {
             const response = await fetch(`${ENV.CLIENT_API}/${url}?limit=${limit}&platformId=${platformId}`)

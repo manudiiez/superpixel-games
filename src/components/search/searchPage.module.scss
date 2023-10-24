@@ -1,0 +1,43 @@
+@import '@/scss/index.scss';
+
+.searchPage {
+    width: 100%;
+    padding: 10rem 1.5rem;
+
+    >div {
+        margin: auto;
+        width: 100%;
+        max-width: 1200px;
+
+        >p {
+            font-size: 1.2rem;
+            color: $text-secondary;
+
+            span {
+                font-weight: 700;
+            }
+        }
+
+        >div {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    @media (min-width: 800px) {
+        >div {
+            >div {
+                flex-direction: row;
+
+                >div {
+                    width: 100%;
+
+                    &:first-of-type {
+                        max-width: 300px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+@import '@/scss/index.scss';
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 500px;
+
+    input {
+        width: 100%;
+        background-color: $background-secondary;
+        height: 50px;
+        border-radius: 20px;
+        border: none;
+        padding: 0 1.5rem;
+    }
+
+    >div {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    button {
+        width: 100%;
+        height: 50px;
+        border-radius: 20px;
+        background-color: $primary;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+
+        &:hover {
+            background-color: $primary-hover;
+        }
+    }
+
+    @media (min-width: 550px) {
+        >div {
+            flex-direction: row;
+        }
+    }
+}
