@@ -1,4 +1,3 @@
-import { ENV } from "@/utils/constants";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
@@ -7,9 +6,10 @@ export const GET = async (request, { params }) => {
         const sort = `sort[0]=createdAt:desc`
         const populate = `populate=user`
         const urlParams = `${filters}&${sort}&${populate}`
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.COMMENTS}?${urlParams}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_COMMENTS}?${urlParams}`
         const response = await fetch(url);
         const result = await response.json()
+        console.log(result);
         if (response.status !== 200) throw result
         return NextResponse.json(result.data)
     } catch (error) {
@@ -23,7 +23,7 @@ export const POST = async (request, { params }) => {
         const body = await request.json()
         const userId = request.headers.get('id')
         const token = request.headers.get('authorization')
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.COMMENTS}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_COMMENTS}`
         const response = await fetch(url, {
             method: "POST",
             headers: {

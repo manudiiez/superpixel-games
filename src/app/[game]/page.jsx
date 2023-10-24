@@ -3,7 +3,6 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styles from './game.module.scss'
-import Image from 'next/image'
 import { ENV } from '@/utils/constants'
 import Header from '@/components/game/header/Header'
 import Separator from '@/components/shared/separator/Separator'
@@ -17,7 +16,7 @@ const page = async ({ params }) => {
 
     const getGameData = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/game/${game}`)
+            const response = await fetch(`${ENV.CLIENT_API}/game/${game}`)
             const result = await response.json()
             return result
         } catch (error) {

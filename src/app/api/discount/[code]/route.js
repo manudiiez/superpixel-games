@@ -1,11 +1,10 @@
-import { ENV } from "@/utils/constants";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
     try {
         const token = request.headers.get('authorization')
         const filters = `filters[code][$eq]=${params.code}`
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.DISCOUNTS}/?${filters}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_DISCOUNTS}/?${filters}`
         const response = await fetch(url, {
             method: "GET",
             headers: {

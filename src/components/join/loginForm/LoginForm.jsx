@@ -18,7 +18,7 @@ const LoginForm = () => {
                 await signIn("credentials", {
                     ...formValue,
                     redirect: true,
-                    callbackUrl: 'http://localhost:3000'
+                    callbackUrl: '/'
                 });
             } catch (error) {
                 console.log(error);

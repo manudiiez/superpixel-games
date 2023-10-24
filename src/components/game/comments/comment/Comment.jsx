@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2'
+import { ENV } from '@/utils/constants';
 
 
 const Comment = ({ comment, reloadData }) => {
@@ -26,7 +27,7 @@ const Comment = ({ comment, reloadData }) => {
             const resultSwal2 = await Swal.fire('¡Comentario Eliminado!', '', 'success')
             if (resultSwal2.isConfirmed) {
                 try {
-                    await fetch(`http://localhost:3000/api/comments/comment/${comment.id}`, {
+                    await fetch(`${ENV.CLIENT_API}/comments/comment/${comment.id}`, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",

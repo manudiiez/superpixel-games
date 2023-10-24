@@ -5,13 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react'
 import styles from './icon.module.scss'
 import classNames from 'classnames';
+import { ENV } from '@/utils/constants';
 
 const Icon = ({ userId, token, className, gameId }) => {
     const [hasWishList, setHasWishList] = useState(null);
 
     const addWishList = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/game/wishlist/${gameId}`, {
+            const response = await fetch(`${ENV.CLIENT_API}/game/wishlist/${gameId}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -29,7 +30,7 @@ const Icon = ({ userId, token, className, gameId }) => {
     const deleteWishList = async () => {
         try {
             try {
-                const url = `http://localhost:3000/api/game/wishlist/${hasWishList.id}`
+                const url = `${ENV.CLIENT_API}/game/wishlist/${hasWishList.id}`
                 await fetch(url, {
                     method: 'DELETE',
                     headers: {
@@ -50,7 +51,7 @@ const Icon = ({ userId, token, className, gameId }) => {
     useEffect(() => {
         (async (token, id) => {
             try {
-                const response = await fetch(`http://localhost:3000/api/game/wishlist/${gameId}`, {
+                const response = await fetch(`${ENV.CLIENT_API}/game/wishlist/${gameId}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

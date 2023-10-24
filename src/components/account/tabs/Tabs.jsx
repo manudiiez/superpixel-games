@@ -24,7 +24,7 @@ const Tabs = () => {
         /* Read more about isConfirmed, isDenied below */
         if (response.isConfirmed) {
             Swal.fire('Sesión cerrada!', '', 'success')
-            signOut({ callbackUrl: 'http://localhost:3000' })
+            signOut({ callbackUrl: '/join/sign-in' })
         }
     }
     return (

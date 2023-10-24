@@ -4,6 +4,7 @@ import { useCart } from "@/hooks/useCart"
 import styles from './cart.module.scss'
 import CartSummary from "@/components/cart/cartSummary/CartSummary"
 import { useEffect, useState } from "react"
+import { ENV } from "@/utils/constants"
 
 
 const page = () => {
@@ -16,7 +17,7 @@ const page = () => {
             try {
                 const data = []
                 for await (const item of cart) {
-                    const response = await fetch(`http://localhost:3000/api/game/cart/${item.id}`)
+                    const response = await fetch(`${ENV.CLIENT_API}/game/cart/${item.id}`)
                     const result = await response.json()
                     data.push({ ...result.data, quantity: item.quantity })
                 }

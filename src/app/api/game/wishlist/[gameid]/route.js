@@ -1,4 +1,3 @@
-import { ENV } from "@/utils/constants";
 import { NextResponse } from "next/server";
 
 
@@ -9,7 +8,7 @@ export const GET = async (request, { params }) => {
         const filterUser = `filters[user][id][$eq][0]=${userId}`
         const filterGame = `filters[game][id][$eq][1]=${params.gameid}`
         const urlParams = `${filterUser}&${filterGame}`
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}?${urlParams}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_WISHLIST}?${urlParams}`
         const response = await fetch(url, {
             method: "GET",
             headers: {
@@ -33,7 +32,7 @@ export const POST = async (request, { params }) => {
     try {
         const userId = request.headers.get('id')
         const token = request.headers.get('authorization')
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_WISHLIST}`
         const response = await fetch(url, {
             method: "POST",
             headers: {
@@ -60,7 +59,7 @@ export const POST = async (request, { params }) => {
 export const DELETE = async (request, { params }) => {
     try {
         const token = request.headers.get('authorization')
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}/${params.gameid}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_WISHLIST}/${params.gameid}`
         const response = await fetch(url, {
             method: "DELETE",
             headers: {

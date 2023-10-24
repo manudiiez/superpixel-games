@@ -1,10 +1,9 @@
-import { ENV } from "@/utils/constants";
 import { NextResponse } from "next/server";
 
 export const DELETE = async (request, { params }) => {
     try {
         const token = request.headers.get('authorization')
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.COMMENTS}/${params.id}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_COMMENTS}/${params.id}`
         const response = await fetch(url, {
             method: "DELETE",
             headers: {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import GridGames from './gridGames/GridGames';
 import { size } from 'lodash';
 import NoResults from '@/components/shared/noResults/NoResults';
+import { ENV } from '@/utils/constants';
 
 const WishList = ({ token, userId }) => {
     const [wishlist, setWishlist] = useState(null);
@@ -11,7 +12,7 @@ const WishList = ({ token, userId }) => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/games/wishlist/${userId}`, {
+                const response = await fetch(`${ENV.CLIENT_API}/games/wishlist/${userId}`, {
                     method: 'GET',
                     headers: {
                         "Content-Type": "application/json",

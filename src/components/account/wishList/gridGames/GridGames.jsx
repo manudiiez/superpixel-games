@@ -4,11 +4,8 @@ import { map } from "lodash";
 import { ENV } from "@/utils/constants";
 import calcDiscountedPrice from "@/utils/func";
 import Discount from "@/components/shared/discount/Discount";
-import WishListIcon from "@/components/shared/wishListIcon/WishListIcon";
 
 const GridGames = ({ games }) => {
-    console.log(games);
-
     return (
         <div className={styles.gridGames}>
             {
@@ -30,7 +27,6 @@ const GridGames = ({ games }) => {
                                 <span className={styles.price}>
                                     {calcDiscountedPrice(game.attributes.price, game.attributes.discount)}$
                                 </span>
-                                {/* <WishListIcon gameId={game.id} className={styles.heart} /> */}
                             </div>
                         </Link>
                     )

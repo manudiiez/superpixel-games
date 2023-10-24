@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react'
 import styles from './cartList.module.scss'
 import { map } from 'lodash'
 import Game from './game/Game'
-import { useCart } from '@/hooks/useCart'
 
 const CartList = ({ games, changeQuantityItem, deleteItem }) => {
 

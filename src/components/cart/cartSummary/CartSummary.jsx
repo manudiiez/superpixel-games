@@ -5,6 +5,7 @@ import calcDiscountedPrice from '@/utils/func';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
 import { useSession } from 'next-auth/react';
+import { ENV } from '@/utils/constants';
 const CartSummary = ({ games }) => {
 
     const { data: session } = useSession()
@@ -41,7 +42,7 @@ const CartSummary = ({ games }) => {
             showCancelButton: true,
             preConfirm: async (code) => {
                 try {
-                    const response = await fetch(`http://localhost:3000/api/discount/${code}`, {
+                    const response = await fetch(`${ENV.CLIENT_API}/discount/${code}`, {
                         method: "GET",
                         headers: {
                             "Content-Type": "application/json",
@@ -75,7 +76,7 @@ const CartSummary = ({ games }) => {
 
     const nextStep = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/mercadopago`, {
+            const response = await fetch(`${ENV.CLIENT_API}/mercadopago`, {
                 method: "POST",
                 body: JSON.stringify({
                     hola: 'manu'

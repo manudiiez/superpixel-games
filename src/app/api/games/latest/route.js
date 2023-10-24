@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { ENV } from "@/utils/constants";
 
 export const GET = async (request) => {
     try {
@@ -11,7 +10,7 @@ export const GET = async (request) => {
         const filterLimit = limit && `pagination[limit]=${limit}`
         const sort = `sort[0]=publishedAt:desc`
         const populate = `populate=*`
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${sort}&${filterLimit}&${filterPlatform}&${populate}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${sort}&${filterLimit}&${filterPlatform}&${populate}`
 
         const response = await fetch(url);
         const result = await response.json()

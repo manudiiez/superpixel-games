@@ -8,6 +8,7 @@ import { map } from 'lodash'
 import classNames from 'classnames'
 import Form from './form/Form'
 import FullModal from '@/components/shared/fullModal/FullModal'
+import { ENV } from '@/utils/constants'
 
 const Comments = ({ data, gameId }) => {
 
@@ -18,7 +19,7 @@ const Comments = ({ data, gameId }) => {
     const openCLoseShowModal = () => setShowModal(!showModal)
     const reloadData = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/comments/${gameId}`)
+            const response = await fetch(`${ENV.CLIENT_API}/comments/${gameId}`)
             setDataLoad(await response.json())
         } catch (error) {
             console.log(error);
@@ -27,7 +28,7 @@ const Comments = ({ data, gameId }) => {
 
     return (
         <section className={styles.comments}>
-            <div>
+            <div className={styles.content}>
                 <div className={styles.commentsHeader} onClick={openCLoseShowList}>
                     <h5>COMENTARIOS</h5>
                     <div>

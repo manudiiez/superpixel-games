@@ -1,6 +1,5 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { ENV } from "@/utils/constants";
 
 export const authOptions = {
     providers: [
@@ -11,7 +10,7 @@ export const authOptions = {
             async authorize(credentials) {
                 const { identifier, password } = credentials;
                 try {
-                    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.LOGIN}`
+                    const url = `${process.env.API_URL}/${process.env.ENDPOINT_AUTH_LOGIN}`
                     const response = await fetch(url, {
                         method: "POST",
                         headers: {

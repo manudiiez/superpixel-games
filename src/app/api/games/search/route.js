@@ -1,4 +1,3 @@
-import { ENV } from "@/utils/constants";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
@@ -13,7 +12,7 @@ export const GET = async (request, { params }) => {
         const pagination = `pagination[page]=${page}&pagination[pageSize]=6`
         const populate = `populate=*`
         const urlParams = `&${pagination}&${populate}&${filters}`
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${urlParams}`
         const response = await fetch(url);
         const result = await response.json()
         if (response.status !== 200) throw result

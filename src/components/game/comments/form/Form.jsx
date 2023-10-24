@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useFormik } from 'formik'
 import { initialValues, validationSchema } from './Form.form'
 import { useSession } from 'next-auth/react'
+import { ENV } from '@/utils/constants'
 
 const Form = ({ gameId, reloadData, openCLoseShowModal }) => {
 
@@ -14,7 +15,7 @@ const Form = ({ gameId, reloadData, openCLoseShowModal }) => {
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                await fetch(`http://localhost:3000/api/comments/${gameId}`, {
+                await fetch(`${ENV.CLIENT_API}/comments/${gameId}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

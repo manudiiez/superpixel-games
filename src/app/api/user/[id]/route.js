@@ -1,4 +1,3 @@
-import { ENV } from "@/utils/constants";
 import { NextResponse } from "next/server";
 
 export const PUT = async (request, { params }) => {
@@ -8,7 +7,7 @@ export const PUT = async (request, { params }) => {
         const body = await request.json()
         console.log(body);
         console.log(params.id);
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.USERS}/${params.id}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_USERS}/${params.id}`
         const response = await fetch(url, {
             method: "PUT",
             headers: {

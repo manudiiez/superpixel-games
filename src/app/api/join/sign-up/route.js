@@ -1,10 +1,9 @@
-import { ENV } from "@/utils/constants";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
     try {
         const body = await request.json()
-        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.REGISTER}`
+        const url = `${process.env.API_URL}/${process.env.ENDPOINT_AUTH_REGISTER}`
         const response = await fetch(url, {
             method: "POST",
             headers: {

@@ -3,6 +3,7 @@ import styles from './formSettings.module.scss'
 import { initialValues, validationSchema } from './formSettings.form';
 import Swal from 'sweetalert2';
 import { signOut } from 'next-auth/react';
+import { ENV } from '@/utils/constants';
 
 
 const FormSettings = ({ user, token, userId }) => {
@@ -23,7 +24,7 @@ const FormSettings = ({ user, token, userId }) => {
                 })
                 /* Read more about isConfirmed, isDenied below */
                 if (response.isConfirmed) {
-                    const responseUpdate = await fetch(`http://localhost:3000/api/user/${userId}`, {
+                    await fetch(`${ENV.CLIENT_API}/user/${userId}`, {
                         method: 'PUT',
                         headers: {
                             "Content-Type": "application/json",

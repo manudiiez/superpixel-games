@@ -1,4 +1,5 @@
 import SearchPage from '@/components/search/SearchPage'
+import { ENV } from '@/utils/constants'
 import React from 'react'
 
 const page = async ({ searchParams }) => {
@@ -7,7 +8,7 @@ const page = async ({ searchParams }) => {
 
     const getData = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/games/search?s=${s}&page=${page}&platforms=${platforms}`)
+            const response = await fetch(`${ENV.CLIENT_API}/games/search?s=${s}&page=${page}&platforms=${platforms}`)
             const result = await response.json()
             return result
         } catch (error) {
