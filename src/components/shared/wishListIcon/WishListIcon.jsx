@@ -1,6 +1,6 @@
 "use client"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Icon from './icon/Icon'
+// import Icon from './icon/Icon'
 import { useSession } from 'next-auth/react'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { useRouter } from 'next/navigation'
