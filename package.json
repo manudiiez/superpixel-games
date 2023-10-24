@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@types/mercadopago": "^1.5.10",
+    "encoding": "^0.1.13",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "sass": "^1.69.3"
