@@ -6,7 +6,7 @@ import Separator from '../shared/separator/Separator'
 import Pagination from '../shared/pagination/Pagination'
 import Filters from './filters/Filters'
 
-const SearchPage = ({ games, pagination, searchText }) => {
+const SearchPage = ({ games, pagination, searchText, platforms }) => {
 
     const hasGames = size(games) > 0
 
@@ -16,7 +16,7 @@ const SearchPage = ({ games, pagination, searchText }) => {
                 <p>Buscando por: <span>{searchText}</span></p>
                 <div>
                     <div>
-                        <Filters searchText={searchText} />
+                        <Filters searchText={searchText} platforms={platforms} />
                     </div>
                     <div>
                         {

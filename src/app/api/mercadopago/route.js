@@ -20,9 +20,7 @@ export const POST = async (request) => {
                 email: '<EMAIL>'
             },
         };
-        console.log(data);
         const response = await payment.create({ data });
-        console.log(response);
         return NextResponse.json({ "hola": "aba" })
 
     } catch (error) {

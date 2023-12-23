@@ -4,21 +4,20 @@ import { useCart } from "@/hooks/useCart"
 import styles from './cart.module.scss'
 import CartSummary from "@/components/cart/cartSummary/CartSummary"
 import { useEffect, useState } from "react"
-import { ENV } from "@/utils/constants"
+import { Cart } from "@/api/cart"
 
 
 const Page = () => {
 
     const { cart, changeQuantityItem, deleteItem } = useCart()
     const [games, setGames] = useState(null);
-
+    const cartCtrl = new Cart()
     useEffect(() => {
         (async () => {
             try {
                 const data = []
                 for await (const item of cart) {
-                    const response = await fetch(`${ENV.CLIENT_API}/game/cart/${item.id}`)
-                    const result = await response.json()
+                    const result = await cartCtrl.getCartGame(item.id)
                     data.push({ ...result.data, quantity: item.quantity })
                 }
                 setGames(data)

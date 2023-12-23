@@ -1,28 +1,17 @@
-import { ENV } from '@/utils/constants'
 import VideoPlayer from '../videoPlayer/VideoPlayer'
 import styles from './bannerVideo.module.scss'
 import calcDiscountedPrice from '@/utils/func'
 import { DateTime } from 'luxon'
 import Discount from '../discount/Discount'
 import Link from 'next/link'
+import { Game } from '@/api/game'
 
 const BannerVideo = async ({ title }) => {
 
-    const getLastGame = async () => {
-        try {
-            const response = await fetch(`${ENV.CLIENT_API}/game/last`)
-            const result = await response.json()
-            return result[1]
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const game = await getLastGame()
+    const gameCtrl = new Game()
+    const game = await gameCtrl.getVideoGame()
     const releaseDate = new Date(game.attributes.releaseDate).toISOString()
     const price = calcDiscountedPrice(game.attributes.price, game.attributes.discount)
-
-
     return (
         <section className={styles.bannerVideo}>
             <div className={styles.videoContainer}>
@@ -66,7 +55,7 @@ const BannerVideo = async ({ title }) => {
                             <p className={styles.finalPrice}>{price}$</p>
                         </div>
 
-                        <Link href='/'>Ver mas</Link>
+                        <Link href={`/${game.attributes.slug}`}>Ver mas</Link>
                     </div>
                 </div>
             </div>

@@ -5,27 +5,22 @@ import { useFormik } from 'formik'
 import { initialValues, validationSchema } from './Form.form'
 import { useSession } from 'next-auth/react'
 import { ENV } from '@/utils/constants'
+import { Comments } from '@/api/comments'
 
-const Form = ({ gameId, reloadData, openCLoseShowModal }) => {
+const Form = ({ gameId, reloadData, openCLoseShowModal, addCountComments }) => {
 
     const { data: session } = useSession()
+    const commentsCtrl = new Comments()
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: validationSchema(),
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                await fetch(`${ENV.CLIENT_API}/comments/${gameId}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Id": session.user.user.id,
-                        "Authorization": `Bearer ${session.user.jwt}`
-                    },
-                    body: JSON.stringify(formValue),
-                });
+                await commentsCtrl.saveComment(gameId, session.user.user.id, session.user.jwt, formValue)
                 reloadData()
                 openCLoseShowModal()
+                addCountComments()
             } catch (error) {
                 console.log(error);
             }

@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const Filters = ({ searchText }) => {
+const Filters = ({ searchText, platforms }) => {
 
     const router = useRouter()
 
@@ -34,7 +34,7 @@ const Filters = ({ searchText }) => {
                     <p>PLATAFORMAS</p>
                     <ul>
                         <li>
-                            <input type="radio" name='platforms' value='' onChange={(e) => selectFilter(e.target.name, e.target.value)} />
+                            <input type="radio" name='platforms' value='' isActive onChange={(e) => selectFilter(e.target.name, e.target.value)} />
                             Todos
                         </li>
                         <li>

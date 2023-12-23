@@ -20,7 +20,6 @@ export const authOptions = {
                     });
                     const result = await response.json()
                     if (response.status !== 200) throw result
-                    console.log(result);
                     return result;
                 } catch (error) {
                     console.log("Error: ", error);

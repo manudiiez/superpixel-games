@@ -2,8 +2,16 @@
 
 .cart {
     width: 100%;
-    padding: 8rem 1.5rem;
+    padding: 8rem 2rem;
     background-color: $background-primary;
+
+    @media (min-width: 700px) {
+        padding: 10rem 3rem;
+    }
+
+    @media (min-width: 900px) {
+        padding: 10rem 4rem;
+    }
 
     >section {
         width: 100%;

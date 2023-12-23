@@ -7,9 +7,14 @@ export const CartContext = createContext()
 
 class Cart {
     getAll() {
-        const response = localStorage.getItem(ENV.CART)
-        if (!response) return []
-        return JSON.parse(response)
+        if (typeof window !== 'undefined') {
+            const response = localStorage.getItem(ENV.CART)
+            if (!response) return []
+            return JSON.parse(response)
+        } else {
+            console.log('localStorage is not available');
+            return []
+        }
     }
 
     add(gameId) {
@@ -23,7 +28,11 @@ class Cart {
         } else {
             games[objIndex].quantity += 1
         }
-        localStorage.setItem(ENV.CART, JSON.stringify(games))
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(ENV.CART, JSON.stringify(games))
+        } else {
+            console.log('localStorage is not available');
+        }
     }
 
     count() {
@@ -41,18 +50,29 @@ class Cart {
         const objIndex = games.findIndex((game) => game.id === gameId)
 
         games[objIndex].quantity = quantity
-
-        localStorage.setItem(ENV.CART, JSON.stringify(games))
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(ENV.CART, JSON.stringify(games))
+        } else {
+            console.log('localStorage is not available');
+        }
     }
 
     delete(gameId) {
         const games = this.getAll()
         const updatedGames = games.filter((game) => game.id !== gameId)
-        localStorage.setItem(ENV.CART, JSON.stringify(updatedGames))
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(ENV.CART, JSON.stringify(updatedGames))
+        } else {
+            console.log('localStorage is not available');
+        }
     }
 
     deleteAll() {
-        localStorage.removeItem(ENV.CART)
+        if (typeof window !== 'undefined') {
+            localStorage.removeItem(ENV.CART)
+        } else {
+            console.log('localStorage is not available');
+        }
     }
 }
 

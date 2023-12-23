@@ -20,8 +20,6 @@ const Tabs = () => {
             cancelButtonText: "Cancelar",
             confirmButtonText: 'Cerrar sesión',
         })
-        console.log(response);
-        /* Read more about isConfirmed, isDenied below */
         if (response.isConfirmed) {
             Swal.fire('Sesión cerrada!', '', 'success')
             signOut({ callbackUrl: '/join/sign-in' })

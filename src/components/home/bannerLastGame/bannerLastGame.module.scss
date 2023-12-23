@@ -27,7 +27,15 @@
         background-color: $background-primary--transparent;
         display: flex;
         align-items: center;
-        padding: 0 1rem;
+        padding: 0 2rem;
+
+        @media (min-width: 700px) {
+            padding: 0 3rem;
+        }
+
+        @media (min-width: 900px) {
+            padding: 0 4rem;
+        }
 
         >div {
             width: 100%;
@@ -74,6 +82,7 @@
                     text-decoration: none;
                     font-size: 1.2rem;
                     height: 45px;
+                    transition: background-color .3s ease-in-out, color .3s ease-in-out, border .3s ease-in-out;
 
                     &:hover {
                         background-color: $primary-hover;

@@ -3,10 +3,7 @@ import { NextResponse } from "next/server";
 export const PUT = async (request, { params }) => {
     try {
         const token = request.headers.get('authorization')
-        console.log(token);
         const body = await request.json()
-        console.log(body);
-        console.log(params.id);
         const url = `${process.env.API_URL}/${process.env.ENDPOINT_USERS}/${params.id}`
         const response = await fetch(url, {
             method: "PUT",

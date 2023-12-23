@@ -2,7 +2,7 @@
 
 .footer {
     background-color: $background-secondary;
-    padding: 6rem 1.5rem;
+    padding: 6rem 2rem;
 
     .content {
         width: 100%;
@@ -62,7 +62,7 @@
     }
 
     @media (min-width: 700px) {
-        padding: 10rem 1.5rem;
+        padding: 10rem 3rem;
 
         .content {
             flex-direction: row-reverse;
@@ -76,5 +76,9 @@
                 }
             }
         }
+    }
+
+    @media (min-width: 900px) {
+        padding: 10rem 4rem;
     }
 }

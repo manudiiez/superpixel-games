@@ -3,24 +3,16 @@ import GridGames from './gridGames/GridGames';
 import { size } from 'lodash';
 import NoResults from '@/components/shared/noResults/NoResults';
 import { ENV } from '@/utils/constants';
+import { Games } from '@/api/games';
 
 const WishList = ({ token, userId }) => {
     const [wishlist, setWishlist] = useState(null);
     const hasGames = size(wishlist) > 0
-
-
+    const gamesCtrl = new Games()
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch(`${ENV.CLIENT_API}/games/wishlist/${userId}`, {
-                    method: 'GET',
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
-                    }
-                });
-                const result = await response.json()
-                setWishlist(result)
+                setWishlist(await gamesCtrl.getWishListGame(userId, token))
             } catch (error) {
                 console.log(error);
             }

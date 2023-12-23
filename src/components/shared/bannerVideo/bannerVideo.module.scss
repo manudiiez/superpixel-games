@@ -8,9 +8,17 @@
     }
 
     .videoContainer {
-        padding: 0 1.5rem;
+        padding: 0 2rem;
         position: relative;
         z-index: 1;
+
+        @media (min-width: 700px) {
+            padding: 0 3rem;
+        }
+
+        @media (min-width: 900px) {
+            padding: 0 4rem;
+        }
 
         >div {
             width: 100%;
@@ -41,7 +49,7 @@
         top: -7rem;
         width: 100%;
         background-color: $primary;
-        padding: 4rem 1.5rem;
+        padding: 4rem 2rem;
         padding-top: 10rem;
 
         >div {
@@ -119,17 +127,18 @@
                         padding: 1rem;
                         border-radius: 20px;
                         text-decoration: none;
-                        font-size: 1.2rem;
+                        font-size: 1.3rem;
                         height: 45px;
                         border: 2px solid $text-primary;
                         margin: auto;
                         margin-top: 2rem;
-                        max-width: 300px;
+                        max-width: 400px;
+                        transition: color .3s ease-in-out, background-color .3s ease-in-out, border .3s ease-in-out;
 
                         &:hover {
                             color: $primary;
                             background-color: $text-primary;
-                            border: none;
+                            border: 2px solid $primary;
                         }
                     }
                 }
@@ -152,9 +161,14 @@
                 }
             }
         }
+
+        .infoContainer {
+            padding: 4rem 3rem;
+            padding-top: 10rem;
+        }
     }
 
-    @media (min-width: 850px) {
+    @media (min-width: 800px) {
         .videoContainer {
             >div {
                 h4 {
@@ -164,7 +178,7 @@
         }
 
         .infoContainer {
-            padding: 6rem 1.5rem;
+            padding: 6rem 4rem;
             padding-top: 12rem;
 
             >div {

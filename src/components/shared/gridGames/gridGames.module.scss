@@ -1,25 +1,22 @@
 @import '@/scss/index.scss';
 
 .gridGames {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -10px;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr;
     gap: 3rem;
-    justify-content: center;
 
     .game {
         width: 100%;
-        max-width: 380px;
         text-decoration: none;
+        transition: opacity .3s ease-in-out;
 
         &:hover {
             opacity: .6;
-
         }
 
         >div {
             position: relative;
-            padding: 10px 10px 0 10px;
 
             &:last-of-type {
                 padding-top: 0;
@@ -61,22 +58,24 @@
 
             .price {
                 font-size: 18px;
+                color: $success;
             }
         }
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 600px) {
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
 
         .game {
-            max-width: 388px;
-
             >div {
                 >img {
-                    height: 280px;
+                    height: 230px;
                 }
             }
         }
+    }
+
+    @media (min-width: 950px) {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }

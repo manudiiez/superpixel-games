@@ -3,10 +3,10 @@ import styles from './registerForm.module.scss'
 import { useFormik } from "formik"
 import { initialValues, validationSchema } from "./RegisterForm.form"
 import { useRouter } from "next/navigation"
-import { ENV } from '@/utils/constants'
+import { User } from '@/api/user'
 
 const RegisterForm = () => {
-
+    const userCtrl = new User()
     const router = useRouter()
 
     const formik = useFormik({
@@ -15,13 +15,7 @@ const RegisterForm = () => {
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                await fetch(`${ENV.CLIENT_API}/join/sign-up`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formValue),
-                });
+                await userCtrl.signUp(formValue)
                 router.push('/join/sign-in')
             } catch (error) {
                 console.log(error);

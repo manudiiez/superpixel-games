@@ -1,26 +1,16 @@
+import { Games } from '@/api/games'
 import SearchPage from '@/components/search/SearchPage'
 import { ENV } from '@/utils/constants'
 import React from 'react'
 
 const Page = async ({ searchParams }) => {
-
+    const gamesCtrl = new Games()
     const { s, page = 1, platforms = '' } = searchParams
-
-    const getData = async () => {
-        try {
-            const response = await fetch(`${ENV.CLIENT_API}/games/search?s=${s}&page=${page}&platforms=${platforms}`)
-            const result = await response.json()
-            return result
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const data = await getData()
+    const data = await gamesCtrl.getSearchGames(s, page, platforms)
     const games = await data.data
     const pagination = await data.meta.pagination
 
-    return <SearchPage games={games} pagination={pagination} searchText={s} />
+    return <SearchPage games={games} pagination={pagination} searchText={s} platforms={platforms} />
 }
 
 export default Page

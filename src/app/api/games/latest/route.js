@@ -5,7 +5,6 @@ export const GET = async (request) => {
         const { searchParams } = new URL(request.url)
         const limit = searchParams.get('limit') || 3
         const platformId = searchParams.get('platformId') || null
-
         const filterPlatform = platformId && `filters[platforms][id][$eq]=${platformId}`
         const filterLimit = limit && `pagination[limit]=${limit}`
         const sort = `sort[0]=publishedAt:desc`

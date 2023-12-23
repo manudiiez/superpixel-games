@@ -14,7 +14,6 @@ export const GET = async (request, { params }) => {
         });
         const result = await response.json()
         if (response.status !== 200) throw new Error('No existe ese cupon status')
-        console.log(result.data.length);
         if (result.data.length < 1) throw new Error('No existe ese cupon')
         // if (result.data[0].attributes.quantity < 1) {
         //     console.log('no quedan');

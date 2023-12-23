@@ -24,7 +24,15 @@
         background: linear-gradient(35deg, rgba(8, 13, 22, 1) 0%, rgba(8, 13, 22, 1) 45%, rgba(8, 13, 22, 0.5214460784313726) 100%);
         width: 100%;
         height: 100%;
-        padding: 0 1.5rem;
+        padding: 0 2rem;
+
+        @media (min-width: 700px) {
+            padding: 0 3rem;
+        }
+
+        @media (min-width: 900px) {
+            padding: 0 4rem;
+        }
 
         .content {
             width: 100%;
@@ -47,6 +55,8 @@
         }
     }
 
+
+
     @media (min-width: 750px) {
         >img {
             &.wallpaper {
@@ -62,7 +72,15 @@
 
 .container {
     width: 100%;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
+
+    @media (min-width: 700px) {
+        padding: 0 3rem;
+    }
+
+    @media (min-width: 900px) {
+        padding: 0 4rem;
+    }
 
     >div {
         width: 100%;

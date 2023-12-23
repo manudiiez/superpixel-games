@@ -9,7 +9,6 @@ export const GET = async (request, { params }) => {
         const url = `${process.env.API_URL}/${process.env.ENDPOINT_COMMENTS}?${urlParams}`
         const response = await fetch(url);
         const result = await response.json()
-        console.log(result);
         if (response.status !== 200) throw result
         return NextResponse.json(result.data)
     } catch (error) {

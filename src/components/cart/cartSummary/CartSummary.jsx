@@ -50,7 +50,6 @@ const CartSummary = ({ games }) => {
                         }
                     })
                     if (response.status !== 200) {
-                        console.log(response.status);
                         throw new Error(response.statusText)
                     }
                     return await response.json()
@@ -63,7 +62,6 @@ const CartSummary = ({ games }) => {
             allowOutsideClick: () => !Swal.isLoading()
         })
         const cupon = res.value
-        console.log(cupon);
         const price = calcDiscountedPrice(totals.price, cupon.attributes.discount)
         setTotals({ ...totals, discount: totals.discount + (totals.price - price), price: price })
         Swal.fire({
@@ -82,7 +80,6 @@ const CartSummary = ({ games }) => {
                     hola: 'manu'
                 })
             })
-            console.log(response);
         } catch (error) {
 
         }

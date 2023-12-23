@@ -2,7 +2,15 @@
 
 .info {
     width: 100%;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
+
+    @media (min-width: 700px) {
+        padding: 0 3rem;
+    }
+
+    @media (min-width: 900px) {
+        padding: 0 4rem;
+    }
 
     .content {
         width: 100%;
@@ -105,6 +113,8 @@
                     background-color: $primary;
                     border: none;
                     font-size: 1.3rem;
+                    transition: background-color .3s ease-in-out;
+                    cursor: pointer;
 
                     &:disabled,
                     &[disabled] {

@@ -7,24 +7,15 @@ import { ENV } from '@/utils/constants'
 import Header from '@/components/game/header/Header'
 import Separator from '@/components/shared/separator/Separator'
 import Info from '@/components/game/info/Info'
-import Comments from '@/components/game/comments/CommentsContainer'
+import CommentsContainer from '@/components/game/comments/CommentsContainer'
 import GamesList from '@/components/shared/gamesList/GamesList'
+import { Game } from '@/api/game'
 
 const Page = async ({ params }) => {
 
     const { game } = params
-
-    const getGameData = async () => {
-        try {
-            const response = await fetch(`${ENV.CLIENT_API}/game/${game}`)
-            const result = await response.json()
-            return result
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const gameData = await getGameData()
+    const gameCtrl = new Game()
+    const gameData = await gameCtrl.getGameBySlug(game)
     const wallpaper = gameData.attributes.wallpaper
     const wallpaperPhone = gameData.attributes.wallpaperPhone
     const video = gameData.attributes.video
@@ -32,8 +23,8 @@ const Page = async ({ params }) => {
     return (
         <>
             <section className={styles.hero}>
-                <img src={`${ENV.SERVER_HOST}${wallpaper.data.attributes.url}`} className={styles.wallpaper} alt="" />
-                <img src={`${ENV.SERVER_HOST}${wallpaperPhone.data.attributes.url}`} className={styles.wallpaperPhone} alt="" />
+                <img src={`${ENV.SERVER_HOST}${wallpaper.data?.attributes.url}`} className={styles.wallpaper} alt="" />
+                <img src={`${ENV.SERVER_HOST}${wallpaperPhone.data?.attributes.url}`} className={styles.wallpaperPhone} alt="" />
                 <div>
                     <div className={styles.content}>
                         <Link href='/'>
@@ -50,10 +41,10 @@ const Page = async ({ params }) => {
             <Separator height={50} />
             <Info game={gameData} />
             <Separator height={100} />
-            <Comments gameId={gameData.id} />
+            <CommentsContainer gameId={gameData.id} />
             <Separator height={100} />
             <section className={styles.container}>
-                <GamesList title="POPULARES" url='games/popular' />
+                <GamesList title="POPULARES" url='popular' />
             </section>
             <Separator height={100} />
         </>

@@ -5,22 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react'
 import styles from './icon.module.scss'
 import classNames from 'classnames';
-import { ENV } from '@/utils/constants';
+import { Game } from '@/api/game';
 
 const Icon = ({ userId, token, className, gameId }) => {
     const [hasWishList, setHasWishList] = useState(null);
-
+    const gameCtrl = new Game()
     const addWishList = async () => {
         try {
-            const response = await fetch(`${ENV.CLIENT_API}/game/wishlist/${gameId}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
-                    "Id": `${userId}`,
-                }
-            });
-            setHasWishList(await response.json())
+            setHasWishList(await gameCtrl.addGameWishList(userId, gameId, token))
         } catch (error) {
             console.log(error);
         }
@@ -30,16 +22,8 @@ const Icon = ({ userId, token, className, gameId }) => {
     const deleteWishList = async () => {
         try {
             try {
-                const url = `${ENV.CLIENT_API}/game/wishlist/${hasWishList.id}`
-                await fetch(url, {
-                    method: 'DELETE',
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
-                    }
-                });
+                await gameCtrl.deleteGameWishList(hasWishList.id, token)
                 setHasWishList(false)
-                // if (removeCallback) removeCallback()
             } catch (error) {
                 console.log(error);
             }
@@ -49,22 +33,13 @@ const Icon = ({ userId, token, className, gameId }) => {
     }
 
     useEffect(() => {
-        (async (token, id) => {
+        (async () => {
             try {
-                const response = await fetch(`${ENV.CLIENT_API}/game/wishlist/${gameId}`, {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
-                        "Id": `${id}`,
-
-                    }
-                });
-                setHasWishList(await response.json())
+                setHasWishList(await gameCtrl.verifyGameWishList(userId, gameId, token))
             } catch (error) {
                 console.log(error);
             }
-        })(token, userId)
+        })()
     }, [])
 
     return (

@@ -1,23 +1,12 @@
-import { ENV } from '@/utils/constants'
-import Comments from './Comments'
+import CommentsList from './CommentsList'
 import './comments.module.scss'
+import { Comments } from '@/api/comments'
 
 const CommentsContainer = async ({ gameId }) => {
-
-    const getData = async () => {
-        try {
-            const response = await fetch(`${ENV.CLIENT_API}/comments/${gameId}`)
-            const result = await response.json()
-            return result
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const commentsData = await getData()
-
+    const commentsCtrl = new Comments()
+    const commentsData = await commentsCtrl.getGameComments(gameId)
     return (
-        <Comments data={commentsData} gameId={gameId} />
+        <CommentsList comments={commentsData} gameId={gameId} />
     )
 }
 

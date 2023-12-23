@@ -2,18 +2,43 @@
 
 .comments {
     width: 100%;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
+
+    @media (min-width: 700px) {
+        padding: 0 3rem;
+    }
+
+    @media (min-width: 900px) {
+        padding: 0 4rem;
+    }
 
     .content {
         width: 100%;
         max-width: 1200px;
         margin: auto;
 
+
         .commentsHeader {
             display: flex;
             gap: 1.5rem;
             margin-bottom: 2rem;
             cursor: pointer;
+            justify-content: space-between;
+
+            >button {
+                background-color: $primary;
+                padding: .5rem 1rem;
+                border: none;
+                font-size: 1.3rem;
+                border-radius: .5rem;
+                cursor: pointer;
+                transition: color .3s ease-in-out, background-color .3s ease-in-out;
+
+                &:hover {
+                    background-color: $text-primary;
+                    color: $primary;
+                }
+            }
 
             h5 {
                 font-size: 1.5rem;
@@ -45,7 +70,8 @@
             gap: 1rem;
             position: relative;
             overflow: hidden;
-            height: 250px;
+            height: 350px;
+            width: 100%;
 
             &.isActive {
                 height: fit-content;
@@ -57,44 +83,45 @@
                 }
             }
 
-            >div {
+            .buttonAdd {
+                width: 100%;
+                max-width: 300px;
+                margin: auto;
 
-                &:nth-last-of-type(2) {
-                    width: 100%;
-                    max-width: 300px;
-                    margin: auto;
-
-                    >button {
-                        cursor: pointer;
-                        width: 100%;
-                        height: 40px;
-                        background-color: $primary;
-                        border: none;
-                        font-size: 1.2rem;
-                        border-radius: 20px;
-
-                        &:hover {
-                            background-color: $primary-hover;
-                        }
-                    }
-                }
-
-                &:last-of-type {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    background: rgb(8, 13, 22);
-                    background: linear-gradient(0deg, rgba(8, 13, 22, 1) 18%, rgba(8, 13, 22, 0) 100%);
-                    width: 100%;
-                    height: 100px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                >button {
                     cursor: pointer;
+                    width: 100%;
+                    height: 40px;
+                    background-color: $primary;
+                    border: none;
+                    font-size: 1.2rem;
+                    border-radius: 20px;
 
                     &:hover {
-                        text-decoration: underline;
+                        background-color: $primary-hover;
                     }
+                }
+            }
+
+            .commentSeparator {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background: rgb(8, 13, 22);
+                background: linear-gradient(0deg, rgba(8, 13, 22, 1) 18%, rgba(8, 13, 22, 0) 100%);
+                width: 100%;
+                height: 100px;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                &.active {
+                    display: flex;
+                }
+
+                &:hover {
+                    text-decoration: underline;
                 }
             }
         }

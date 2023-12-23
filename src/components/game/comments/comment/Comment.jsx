@@ -4,14 +4,15 @@ import { useSession } from 'next-auth/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2'
-import { ENV } from '@/utils/constants';
+import { Comments } from '@/api/comments';
 
 
-const Comment = ({ comment, reloadData }) => {
+const Comment = ({ comment, reloadData, restCountComments }) => {
     const username = comment.attributes.user.data.attributes.username
     const userId = comment.attributes.user.data.id
     const { data: session } = useSession()
     const id = session?.user.user.id
+    const commentsCtrl = new Comments()
 
     const deleteComment = async () => {
         const resultSwal1 = await Swal.fire({
@@ -27,14 +28,9 @@ const Comment = ({ comment, reloadData }) => {
             const resultSwal2 = await Swal.fire('¡Comentario Eliminado!', '', 'success')
             if (resultSwal2.isConfirmed) {
                 try {
-                    await fetch(`${ENV.CLIENT_API}/comments/comment/${comment.id}`, {
-                        method: "DELETE",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${session.user.jwt}`
-                        },
-                    });
+                    await commentsCtrl.deleteComment(comment.id, session.user.jwt)
                     reloadData()
+                    restCountComments()
                 } catch (error) {
                     console.log(error);
                 }

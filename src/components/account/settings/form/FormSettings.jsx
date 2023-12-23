@@ -4,11 +4,12 @@ import { initialValues, validationSchema } from './formSettings.form';
 import Swal from 'sweetalert2';
 import { signOut } from 'next-auth/react';
 import { ENV } from '@/utils/constants';
+import { User } from '@/api/user';
 
 
 const FormSettings = ({ user, token, userId }) => {
 
-
+    const userCtrl = new User()
     const formik = useFormik({
         initialValues: initialValues(user.firstname, user.lastname, user.username, user.email),
         validationSchema: validationSchema(),
@@ -22,16 +23,8 @@ const FormSettings = ({ user, token, userId }) => {
                     cancelButtonText: "Cancelar",
                     confirmButtonText: 'Editar',
                 })
-                /* Read more about isConfirmed, isDenied below */
                 if (response.isConfirmed) {
-                    await fetch(`${ENV.CLIENT_API}/user/${userId}`, {
-                        method: 'PUT',
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token}`,
-                        },
-                        body: JSON.stringify(formValue)
-                    });
+                    await userCtrl.update(userId, token, formValue)
                     signOut()
                 }
             } catch (error) {

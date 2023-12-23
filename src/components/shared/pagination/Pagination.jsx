@@ -19,7 +19,6 @@ const Pagination = ({ totalPages, currentPage }) => {
     const onPageChange = (page) => {
         router.push(pathname + '?' + createQuery('page', page))
     }
-
     return (
         <div className={styles.pagination}>
             <div>
@@ -27,7 +26,7 @@ const Pagination = ({ totalPages, currentPage }) => {
                     <FontAwesomeIcon icon={faAngleLeft} />
                 </button>
                 <button>{currentPage}</button>
-                <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage + 1 >= totalPages}>
+                <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage + 1 > totalPages}>
                     <FontAwesomeIcon icon={faAngleRight} />
                 </button>
             </div>

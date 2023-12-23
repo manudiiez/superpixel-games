@@ -1,28 +1,17 @@
-import Image from 'next/image'
-import styles from './bannerLastGame.module.scss'
 import { ENV } from '@/utils/constants'
-import calcDiscountedPrice from '@/utils/func'
-import Discount from '@/components/shared/discount/Discount'
-import Link from 'next/link'
+import styles from './bannerLastGame.module.scss'
+import { Game } from '@/api/game';
+import calcDiscountedPrice from '@/utils/func';
+import Discount from '@/components/shared/discount/Discount';
+import Link from 'next/link';
 
 const BannerLastGame = async () => {
-
-    const getLastGame = async () => {
-        try {
-            const response = await fetch(`${ENV.CLIENT_API}/game/last`)
-            const result = await response.json()
-            return result[0]
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const game = await getLastGame()
+    const gameCtrl = new Game();
+    const game = await gameCtrl.getLastGame()
     const wallpaper = game.attributes.wallpaper
     const wallpaperPhone = game.attributes.wallpaperPhone
     const price = calcDiscountedPrice(game.attributes.price, game.attributes.discount)
-
-
+    if (!game) return null
     return (
         <section className={styles.bannerLastGame}>
             <img src={`${ENV.SERVER_HOST}${wallpaper.data.attributes.url}`} className={styles.wallpaper} alt="" />
