@@ -1,5 +1,3 @@
-import { ENV } from "@/utils/constants"
-
 export class Games {
 
     getLastestGames = async () => {
@@ -8,7 +6,7 @@ export class Games {
             const filterLimit = limit && `pagination[limit]=${limit}`
             const sort = `sort[0]=publishedAt:desc`
             const populate = `populate=*`
-            const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${sort}&${filterLimit}&${populate}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GAME}?${sort}&${filterLimit}&${populate}`
             const response = await fetch(url);
             const result = await response.json()
             if (response.status !== 200) throw result
@@ -24,7 +22,7 @@ export class Games {
             const filters = `filters[id][$eq][0]=5&filters[id][$eq][1]=4&filters[id][$eq][2]=2`
             const filterLimit = limit && `pagination[limit]=${limit}`
             const populate = `populate=*`
-            const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${filterLimit}&${filters}&${populate}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GAME}?${filterLimit}&${filters}&${populate}`
 
             const response = await fetch(url);
             const result = await response.json()
@@ -41,7 +39,7 @@ export class Games {
             const sort = `sort[0]=publishedAt:desc`
             const filterPlatform = `filters[platforms][id][$eq]=${id}`
             const populate = `populate=*`
-            const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${sort}&${filterLimit}&${filterPlatform}&${populate}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GAME}?${sort}&${filterLimit}&${filterPlatform}&${populate}`
             const response = await fetch(url);
             const result = await response.json()
             if (response.status !== 200) throw result
@@ -59,7 +57,7 @@ export class Games {
             const pagination = `pagination[page]=${page}&pagination[pageSize]=6`
             const populate = `populate=*`
             const urlParams = `&${pagination}&${populate}&${filters}`
-            const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${urlParams}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GAME}?${urlParams}`
             const response = await fetch(url);
             const result = await response.json()
             if (response.status !== 200) throw result
@@ -73,7 +71,7 @@ export class Games {
         try {
             const filters = `filters[user][id][$eq]=${id}`
             const populate = `populate[0]=game&populate[1]=game.cover`
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}?${filters}&${populate}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_WISHLIST}?${filters}&${populate}`
             const response = await fetch(url, {
                 method: "GET",
                 headers: {

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export const POST = async (request) => {
     try {
         const body = await request.json()
-        const url = `${process.env.API_URL}/${process.env.ENDPOINT_AUTH_REGISTER}`
+        const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_REGISTER}`
         const response = await fetch(url, {
             method: "POST",
             headers: {

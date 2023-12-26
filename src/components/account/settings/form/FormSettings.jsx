@@ -3,7 +3,6 @@ import styles from './formSettings.module.scss'
 import { initialValues, validationSchema } from './formSettings.form';
 import Swal from 'sweetalert2';
 import { signOut } from 'next-auth/react';
-import { ENV } from '@/utils/constants';
 import { User } from '@/api/user';
 
 

@@ -1,5 +1,4 @@
 "use client"
-import { ENV } from "@/utils/constants";
 import { forEach } from "lodash";
 import { useState, useEffect, createContext } from "react";
 
@@ -8,7 +7,7 @@ export const CartContext = createContext()
 class Cart {
     getAll() {
         if (typeof window !== 'undefined') {
-            const response = localStorage.getItem(ENV.CART)
+            const response = localStorage.getItem(process.env.NEXT_PUBLIC_ENDPOINT_CART)
             if (!response) return []
             return JSON.parse(response)
         } else {
@@ -29,7 +28,7 @@ class Cart {
             games[objIndex].quantity += 1
         }
         if (typeof window !== 'undefined') {
-            localStorage.setItem(ENV.CART, JSON.stringify(games))
+            localStorage.setItem(process.env.NEXT_PUBLIC_ENDPOINT_CART, JSON.stringify(games))
         } else {
             console.log('localStorage is not available');
         }
@@ -51,7 +50,7 @@ class Cart {
 
         games[objIndex].quantity = quantity
         if (typeof window !== 'undefined') {
-            localStorage.setItem(ENV.CART, JSON.stringify(games))
+            localStorage.setItem(process.env.NEXT_PUBLIC_ENDPOINT_CART, JSON.stringify(games))
         } else {
             console.log('localStorage is not available');
         }
@@ -61,7 +60,7 @@ class Cart {
         const games = this.getAll()
         const updatedGames = games.filter((game) => game.id !== gameId)
         if (typeof window !== 'undefined') {
-            localStorage.setItem(ENV.CART, JSON.stringify(updatedGames))
+            localStorage.setItem(process.env.NEXT_PUBLIC_ENDPOINT_CART, JSON.stringify(updatedGames))
         } else {
             console.log('localStorage is not available');
         }
@@ -69,7 +68,7 @@ class Cart {
 
     deleteAll() {
         if (typeof window !== 'undefined') {
-            localStorage.removeItem(ENV.CART)
+            localStorage.removeItem(process.env.NEXT_PUBLIC_ENDPOINT_CART)
         } else {
             console.log('localStorage is not available');
         }

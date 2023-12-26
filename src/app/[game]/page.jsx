@@ -3,7 +3,6 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styles from './game.module.scss'
-import { ENV } from '@/utils/constants'
 import Header from '@/components/game/header/Header'
 import Separator from '@/components/shared/separator/Separator'
 import Info from '@/components/game/info/Info'
@@ -23,8 +22,8 @@ const Page = async ({ params }) => {
     return (
         <>
             <section className={styles.hero}>
-                <img src={`${ENV.SERVER_HOST}${wallpaper.data?.attributes.url}`} className={styles.wallpaper} alt="" />
-                <img src={`${ENV.SERVER_HOST}${wallpaperPhone.data?.attributes.url}`} className={styles.wallpaperPhone} alt="" />
+                <img src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${wallpaper.data?.attributes.url}`} className={styles.wallpaper} alt="" />
+                <img src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${wallpaperPhone.data?.attributes.url}`} className={styles.wallpaperPhone} alt="" />
                 <div>
                     <div className={styles.content}>
                         <Link href='/'>

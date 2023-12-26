@@ -6,7 +6,7 @@ export const GET = async (request, { params }) => {
         const sort = `sort[0]=createdAt:desc`
         const populate = `populate=user`
         const urlParams = `${filters}&${sort}&${populate}`
-        const url = `${process.env.API_URL}/${process.env.ENDPOINT_COMMENTS}?${urlParams}`
+        const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_COMMENTS}?${urlParams}`
         const response = await fetch(url);
         const result = await response.json()
         if (response.status !== 200) throw result
@@ -22,7 +22,7 @@ export const POST = async (request, { params }) => {
         const body = await request.json()
         const userId = request.headers.get('id')
         const token = request.headers.get('authorization')
-        const url = `${process.env.API_URL}/${process.env.ENDPOINT_COMMENTS}`
+        const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_COMMENTS}`
         const response = await fetch(url, {
             method: "POST",
             headers: {

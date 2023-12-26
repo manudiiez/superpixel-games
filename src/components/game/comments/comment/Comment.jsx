@@ -45,9 +45,6 @@ const Comment = ({ comment, reloadData, restCountComments }) => {
                 {
                     userId === id && (
                         <div>
-                            <button >
-                                <FontAwesomeIcon icon={faPenToSquare} />
-                            </button>
                             <button onClick={deleteComment}>
                                 <FontAwesomeIcon icon={faTrash} />
                             </button>

@@ -1,5 +1,3 @@
-import { ENV } from "@/utils/constants"
-
 
 export class Game {
     getLastGame = async () => {
@@ -7,7 +5,7 @@ export class Game {
             const sort = 'sort[0]=publishedAt:desc'
             const pagination = 'pagination[limit]=1'
             const populate = 'populate=*'
-            const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${sort}&${pagination}&${populate}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GAME}?${sort}&${pagination}&${populate}`
             const response = await fetch(url);
             const result = await response.json()
             if (response.status !== 200) throw result
@@ -22,7 +20,7 @@ export class Game {
             const sort = 'sort[0]=publishedAt:desc'
             const pagination = 'pagination[limit]=2'
             const populate = 'populate=*'
-            const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${sort}&${pagination}&${populate}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GAME}?${sort}&${pagination}&${populate}`
             const response = await fetch(url);
             const result = await response.json()
             if (response.status !== 200) throw result
@@ -40,7 +38,7 @@ export class Game {
             const populates = `${populateGame}&${populatePlatform}`
             const urlParams = `${filters}&${populates}`
 
-            const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${urlParams}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GAME}?${urlParams}`
             const response = await fetch(url);
             const result = await response.json()
             if (response.status !== 200) throw result
@@ -55,7 +53,7 @@ export class Game {
             const filterUser = `filters[user][id][$eq][0]=${userId}`
             const filterGame = `filters[game][id][$eq][1]=${gameId}`
             const urlParams = `${filterUser}&${filterGame}`
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}?${urlParams}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_WISHLIST}?${urlParams}`
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
@@ -77,7 +75,7 @@ export class Game {
 
     addGameWishList = async (userId, gameId, token) => {
         try {
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_WISHLIST}`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -103,7 +101,7 @@ export class Game {
 
     deleteGameWishList = async (hasWishList, token) => {
         try {
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}/${hasWishList}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_WISHLIST}/${hasWishList}`
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {

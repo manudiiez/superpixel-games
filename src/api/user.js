@@ -1,9 +1,7 @@
-import { ENV } from "@/utils/constants"
-
 export class User {
     signUp = async (data) => {
         try {
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.REGISTER}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_REGISTER}`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -21,7 +19,7 @@ export class User {
 
     update = async (id, token, body) => {
         try {
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.USER}/${id}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_USERS}/${id}`
             const response = await fetch(url, {
                 method: "PUT",
                 headers: {

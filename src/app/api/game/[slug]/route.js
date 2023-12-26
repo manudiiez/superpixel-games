@@ -8,7 +8,7 @@ export const GET = async (request, { params }) => {
         const populates = `${populateGame}&${populatePlatform}`
         const urlParams = `${filters}&${populates}`
 
-        const url = `${process.env.API_URL}/${process.env.ENDPOINT_GAME}?${urlParams}`
+        const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_GAME}?${urlParams}`
 
         const response = await fetch(url);
         const result = await response.json()

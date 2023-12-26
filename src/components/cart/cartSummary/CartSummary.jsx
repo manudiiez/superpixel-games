@@ -32,49 +32,6 @@ const CartSummary = ({ games, deleteAllItems }) => {
         setTotals(totals)
     }, [games])
 
-    // const addCupon = async () => {
-
-    //     const res = await Swal.fire({
-    //         title: 'Codigo de cupon',
-    //         icon: 'question',
-    //         input: 'text',
-    //         showLoaderOnConfirm: true,
-    //         inputAttributes: {
-    //             autocapitalize: 'off'
-    //         },
-    //         showCancelButton: true,
-    //         preConfirm: async (code) => {
-    //             try {
-    //                 const response = await fetch(`${ENV.CLIENT_API}/discount/${code}`, {
-    //                     method: "GET",
-    //                     headers: {
-    //                         "Content-Type": "application/json",
-    //                         "Authorization": `Bearer ${session.user.jwt}`,
-    //                     }
-    //                 })
-    //                 if (response.status !== 200) {
-    //                     throw new Error(response.statusText)
-    //                 }
-    //                 return await response.json()
-    //             } catch (error) {
-    //                 console.log(error);
-    //                 Swal.showValidationMessage(`Error: no quedan descuentos`)
-
-    //             }
-    //         },
-    //         allowOutsideClick: () => !Swal.isLoading()
-    //     })
-    //     const cupon = res.value
-    //     const price = calcDiscountedPrice(totals.price, cupon.attributes.discount)
-    //     setTotals({ ...totals, discount: totals.discount + (totals.price - price), price: price })
-    //     Swal.fire({
-    //         icon: 'success',
-    //         text: 'Descuento aplicado'
-    //     })
-
-
-    // }
-
     const nextStep = async () => {
         try {
             await Swal.fire({

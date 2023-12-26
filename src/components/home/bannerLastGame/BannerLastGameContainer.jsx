@@ -1,4 +1,3 @@
-import { ENV } from '@/utils/constants'
 import styles from './bannerLastGame.module.scss'
 import { Game } from '@/api/game';
 import calcDiscountedPrice from '@/utils/func';
@@ -14,8 +13,8 @@ const BannerLastGame = async () => {
     if (!game) return null
     return (
         <section className={styles.bannerLastGame}>
-            <img src={`${ENV.SERVER_HOST}${wallpaper.data.attributes.url}`} className={styles.wallpaper} alt="" />
-            <img src={`${ENV.SERVER_HOST}${wallpaperPhone.data.attributes.url}`} className={styles.wallpaperPhone} alt="" />
+            <img src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${wallpaper.data.attributes.url}`} className={styles.wallpaper} alt="" />
+            <img src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${wallpaperPhone.data.attributes.url}`} className={styles.wallpaperPhone} alt="" />
             <div className={styles.container}>
                 <div>
                     <h1>{game.attributes.title}</h1>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from './gridGames.module.scss'
 import { map } from "lodash";
-import { ENV } from "@/utils/constants";
 import calcDiscountedPrice from "@/utils/func";
 import Discount from "@/components/shared/discount/Discount";
 
@@ -14,7 +13,7 @@ const GridGames = ({ games }) => {
                     return (
                         <Link href={`/${game.attributes.slug}`} key={game.id} className={styles.game}>
                             <div>
-                                <img src={`${ENV.SERVER_HOST}${game.attributes.cover.data.attributes.url}`} className={styles.wallpaper} />
+                                <img src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${game.attributes.cover.data.attributes.url}`} className={styles.wallpaper} />
                                 {game.attributes.discount > 0 && (
                                     <Discount className={styles.discount}>
                                         {`-${game.attributes.discount}%`}

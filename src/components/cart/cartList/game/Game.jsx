@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styles from './game.module.scss'
-import { ENV } from '@/utils/constants';
 import calcDiscountedPrice from '@/utils/func';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -30,7 +29,7 @@ const Game = ({ game, changeQuantityItem, deleteItem }) => {
                 <button onClick={restItem}>-</button>
             </div>
             <div className={styles.center}>
-                <img src={ENV.SERVER_HOST + cover} alt="" />
+                <img src={process.env.NEXT_PUBLIC_SERVER_HOST + cover} alt="" />
                 <div>
                     <h6>{game.attributes.title}</h6>
                     <p>{calcDiscountedPrice(game.attributes.price, game.attributes.discount)}$</p>

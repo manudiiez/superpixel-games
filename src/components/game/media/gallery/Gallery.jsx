@@ -1,7 +1,6 @@
 "use client"
 import { map } from 'lodash';
 import styles from './gallery.module.scss'
-import { ENV } from '@/utils/constants';
 import Slider from "react-slick";
 import FullModal from '@/components/shared/fullModal/FullModal';
 import { useState, useRef, useEffect } from 'react';
@@ -41,7 +40,7 @@ const Gallery = ({ screenshots }) => {
                         {
                             map(screenshots, (screenshot) => (
                                 <div key={screenshot.id} className={styles.image} onClick={onOpenClose}>
-                                    <img src={ENV.SERVER_HOST + screenshot.attributes.url} alt="" />
+                                    <img src={process.env.NEXT_PUBLIC_SERVER_HOST + screenshot.attributes.url} alt="" />
                                 </div>
                             ))
                         }
@@ -52,7 +51,7 @@ const Gallery = ({ screenshots }) => {
                         {
                             map(screenshots, (screenshot) => (
                                 <div key={screenshot.id} className={styles.image} onClick={onOpenClose}>
-                                    <img src={ENV.SERVER_HOST + screenshot.attributes.url} alt="" />
+                                    <img src={process.env.NEXT_PUBLIC_SERVER_HOST + screenshot.attributes.url} alt="" />
                                 </div>
                             ))
                         }
@@ -65,7 +64,7 @@ const Gallery = ({ screenshots }) => {
                         {
                             map(screenshots, (screenshot) => (
                                 <div key={screenshot.id} className={styles.image} >
-                                    <img src={ENV.SERVER_HOST + screenshot.attributes.url} alt="" />
+                                    <img src={process.env.NEXT_PUBLIC_SERVER_HOST + screenshot.attributes.url} alt="" />
                                 </div>
                             ))
                         }

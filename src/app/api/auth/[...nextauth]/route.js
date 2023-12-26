@@ -10,7 +10,7 @@ export const authOptions = {
             async authorize(credentials) {
                 const { identifier, password } = credentials;
                 try {
-                    const url = `${process.env.API_URL}/${process.env.ENDPOINT_AUTH_LOGIN}`
+                    const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_AUTH_LOGIN}`
                     const response = await fetch(url, {
                         method: "POST",
                         headers: {
@@ -31,7 +31,7 @@ export const authOptions = {
     session: {
         strategy: "jwt",
     },
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
 
     pages: {
         signIn: "/join/sign-in",

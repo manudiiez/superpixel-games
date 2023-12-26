@@ -5,7 +5,7 @@ export const GET = async (request, { params }) => {
         const token = request.headers.get('authorization')
         const filters = `filters[user][id][$eq]=${params.userid}`
         const populate = `populate[0]=game&populate[1]=game.cover`
-        const url = `${process.env.API_URL}/${process.env.ENDPOINT_WISHLIST}?${filters}&${populate}`
+        const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_WISHLIST}?${filters}&${populate}`
         const response = await fetch(url, {
             method: "GET",
             headers: {

@@ -1,6 +1,5 @@
 import { Games } from '@/api/games'
 import SearchPage from '@/components/search/SearchPage'
-import { ENV } from '@/utils/constants'
 import React from 'react'
 
 const Page = async ({ searchParams }) => {

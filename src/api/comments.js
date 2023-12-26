@@ -1,4 +1,3 @@
-import { ENV } from "@/utils/constants"
 
 export class Comments {
     getGameComments = async (id) => {
@@ -7,7 +6,7 @@ export class Comments {
             const sort = `sort[0]=createdAt:desc`
             const populate = `populate=user`
             const urlParams = `${filters}&${sort}&${populate}`
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.COMMENTS}?${urlParams}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_COMMENTS}?${urlParams}`
             const response = await fetch(url);
             const result = await response.json()
             if (response.status !== 200) throw result
@@ -19,7 +18,7 @@ export class Comments {
 
     saveComment = async (id, userId, token, body) => {
         try {
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.COMMENTS}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_COMMENTS}`
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -46,7 +45,7 @@ export class Comments {
 
     deleteComment = async (id, token) => {
         try {
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.COMMENTS}/${id}`
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_ENDPOINT_COMMENTS}/${id}`
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {

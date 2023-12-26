@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import GridGames from './gridGames/GridGames';
 import { size } from 'lodash';
 import NoResults from '@/components/shared/noResults/NoResults';
-import { ENV } from '@/utils/constants';
 import { Games } from '@/api/games';
 
 const WishList = ({ token, userId }) => {
