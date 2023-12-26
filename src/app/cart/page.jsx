@@ -8,10 +8,10 @@ import { Cart } from "@/api/cart"
 
 
 const Page = () => {
-
-    const { cart, changeQuantityItem, deleteItem } = useCart()
+    const { cart, changeQuantityItem, deleteItem, deleteAll } = useCart()
     const [games, setGames] = useState(null);
     const cartCtrl = new Cart()
+
     useEffect(() => {
         (async () => {
             try {
@@ -27,6 +27,7 @@ const Page = () => {
         })()
     }, [cart])
 
+
     if (!cart) return null
     return (
         <div className={styles.cartContainer}>
@@ -36,7 +37,7 @@ const Page = () => {
             </div>
             <div>
                 <h5>Resumen</h5>
-                <CartSummary games={games} />
+                <CartSummary games={games} deleteAllItems={deleteAll} />
             </div>
         </div>
     )

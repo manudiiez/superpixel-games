@@ -109,6 +109,7 @@ export function CartProvider({ children }) {
     }
 
     const deleteAllItems = () => {
+        console.log('deleteAll');
         cartCtrl.deleteAll()
         setCart(null)
         refreshTotalCart()

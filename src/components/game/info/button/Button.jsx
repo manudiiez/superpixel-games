@@ -12,7 +12,7 @@ const Button = ({ gameId }) => {
         addCart(gameId)
         setTimeout(() => {
             setLoading(false)
-        }, 1500)
+        }, 500)
     }
     return (
         <button onClick={addCartWrapper} disabled={loading}>

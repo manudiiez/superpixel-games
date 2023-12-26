@@ -5,11 +5,14 @@ import calcDiscountedPrice from '@/utils/func';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
 import { useSession } from 'next-auth/react';
-import { ENV } from '@/utils/constants';
-const CartSummary = ({ games }) => {
+import { useRouter } from 'next/navigation'
+
+
+const CartSummary = ({ games, deleteAllItems }) => {
 
     const { data: session } = useSession()
     const [totals, setTotals] = useState(null);
+    const router = useRouter()
 
     useEffect(() => {
         let totals = {
@@ -29,67 +32,68 @@ const CartSummary = ({ games }) => {
         setTotals(totals)
     }, [games])
 
-    const addCupon = async () => {
+    // const addCupon = async () => {
 
-        const res = await Swal.fire({
-            title: 'Codigo de cupon',
-            icon: 'question',
-            input: 'text',
-            showLoaderOnConfirm: true,
-            inputAttributes: {
-                autocapitalize: 'off'
-            },
-            showCancelButton: true,
-            preConfirm: async (code) => {
-                try {
-                    const response = await fetch(`${ENV.CLIENT_API}/discount/${code}`, {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${session.user.jwt}`,
-                        }
-                    })
-                    if (response.status !== 200) {
-                        throw new Error(response.statusText)
-                    }
-                    return await response.json()
-                } catch (error) {
-                    console.log(error);
-                    Swal.showValidationMessage(`Error: no quedan descuentos`)
+    //     const res = await Swal.fire({
+    //         title: 'Codigo de cupon',
+    //         icon: 'question',
+    //         input: 'text',
+    //         showLoaderOnConfirm: true,
+    //         inputAttributes: {
+    //             autocapitalize: 'off'
+    //         },
+    //         showCancelButton: true,
+    //         preConfirm: async (code) => {
+    //             try {
+    //                 const response = await fetch(`${ENV.CLIENT_API}/discount/${code}`, {
+    //                     method: "GET",
+    //                     headers: {
+    //                         "Content-Type": "application/json",
+    //                         "Authorization": `Bearer ${session.user.jwt}`,
+    //                     }
+    //                 })
+    //                 if (response.status !== 200) {
+    //                     throw new Error(response.statusText)
+    //                 }
+    //                 return await response.json()
+    //             } catch (error) {
+    //                 console.log(error);
+    //                 Swal.showValidationMessage(`Error: no quedan descuentos`)
 
-                }
-            },
-            allowOutsideClick: () => !Swal.isLoading()
-        })
-        const cupon = res.value
-        const price = calcDiscountedPrice(totals.price, cupon.attributes.discount)
-        setTotals({ ...totals, discount: totals.discount + (totals.price - price), price: price })
-        Swal.fire({
-            icon: 'success',
-            text: 'Descuento aplicado'
-        })
+    //             }
+    //         },
+    //         allowOutsideClick: () => !Swal.isLoading()
+    //     })
+    //     const cupon = res.value
+    //     const price = calcDiscountedPrice(totals.price, cupon.attributes.discount)
+    //     setTotals({ ...totals, discount: totals.discount + (totals.price - price), price: price })
+    //     Swal.fire({
+    //         icon: 'success',
+    //         text: 'Descuento aplicado'
+    //     })
 
 
-    }
+    // }
 
     const nextStep = async () => {
         try {
-            const response = await fetch(`${ENV.CLIENT_API}/mercadopago`, {
-                method: "POST",
-                body: JSON.stringify({
-                    hola: 'manu'
-                })
+            await Swal.fire({
+                icon: 'success',
+                text: 'Compra realizada'
             })
-        } catch (error) {
+            deleteAllItems()
+            router.push('/')
 
+        } catch (error) {
+            console.log(error);
         }
     }
 
     return (
         <div className={styles.summary}>
-            <div>
+            {/* <div>
                 <button onClick={addCupon}>Aplicar Descuento</button>
-            </div>
+            </div> */}
             <div className={styles.summaryInfo}>
 
                 <div>

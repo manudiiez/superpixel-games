@@ -1,7 +1,6 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '@/scss/global.scss';
-// import '@/utils/mp'
 import Footer from '@/components/layout/footer/Footer'
 import Menu from '@/components/layout/menu/Menu'
 import { Inter } from 'next/font/google'
@@ -28,6 +27,7 @@ export default function RootLayout({ children }) {
           </CartProvider>
         </AuthProvider>
         <Footer />
+
       </body>
     </html>
   )

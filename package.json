@@ -19,7 +19,7 @@
     "formik": "^2.4.5",
     "lodash": "^4.17.21",
     "luxon": "^3.4.3",
-    "mercadopago": "^2.0.3",
+    "mercadopago": "^1.5.16",
     "next": "13.5.4",
     "next-auth": "^4.23.2",
     "react": "^18",
@@ -31,7 +31,7 @@
     "yup": "^1.3.2"
   },
   "devDependencies": {
-    "@types/mercadopago": "^1.5.10",
+    "@types/mercadopago": "^1.5.11",
     "encoding": "^0.1.13",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
